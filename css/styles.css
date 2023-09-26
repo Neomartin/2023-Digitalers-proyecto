@@ -1,0 +1,18 @@
+.table-image img {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.table-title {
+    font-weight: bold;
+}
+
+.table-description {
+    font-size: .875rem;
+    font-family: monospace
+}
+.table-price {
+    font-weight: bold;
+}
