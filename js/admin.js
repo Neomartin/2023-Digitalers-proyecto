@@ -43,6 +43,42 @@ const consolas = [
         precio: 59.99,
         imagen: 'https://m.media-amazon.com/images/I/81s7B+Als-L._SL1500_.jpg',
         categoria: 'Consola Retro'
+    },
+    {
+        id: '5732bbf2-fa29-43c5-9acd-8246334ff9ea',
+        descripcion: 'Consola portátil con dos pantallas, una de ellas táctil.',
+        titulo: 'Nintendo DS',
+        fechaDeCreacion: '2004-11-21',
+        precio: 149.99,
+        categoria: 'Consola Portátil',
+        imagen: 'https://assets.stickpng.com/images/585ea26acb11b227491c3509.png'
+    },
+    {
+        id: 'ade12391-5086-409f-8011-3f04dd897f46',
+        descripcion: 'Consola de hogar con innovador control en forma de tableta.',
+        titulo: 'Nintendo Wii U',
+        fechaDeCreacion: '2012-11-18',
+        precio: 299.99,
+        categoria: 'Consola de Hogar',
+        imagen: 'https://nucleogamer.com/wp-content/uploads/492448_thumb-1.png',
+    },
+    {
+        id: '29122478-2e13-41c5-8bbc-8e1a24423c43',
+        descripcion: 'Consola con gráficos realistas y unidad de Blu-ray.',
+        titulo: 'PlayStation 4',
+        fechaDeCreacion: '2013-11-15',
+        precio: 399.99,
+        categoria: 'Consola de Hogar',
+        imagen: 'https://livingplaystation.com/wp-content/uploads/2018/11/playstation-4-pro.png',
+    },
+    {
+        id: 'f00f413d-2e20-46f0-914f-0b4538f23599',
+        imagen: 'https://www.jvgelectronics.in/storage/product/1634471779img2.png',
+        descripcion: 'Consola de hogar con posibilidad de ver películas en DVD.',
+        titulo: 'Xbox 360',
+        fechaDeCreacion: '2005-11-22',
+        precio: 299.99,
+        categoria: 'Consola de Hogar'
     }
 ];
 const tableBodyHTML = document.querySelector("#table-body")
