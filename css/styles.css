@@ -16,3 +16,7 @@
 .table-price {
     font-weight: bold;
 }
+
+textarea {
+    resize: none;
+}

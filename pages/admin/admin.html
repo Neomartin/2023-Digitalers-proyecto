@@ -24,14 +24,15 @@
                 <label for="tituloProducto" class="form-label">Nombre producto</label>
                 <input 
                   type="text"
-                  name="titulo"
+                  name="tituloName"
                   class="form-control" 
                   id="tituloProducto" 
                   placeholder="Playstation 3"
                   required
                   minlength="3"
                   maxlength="70"
-                >
+                 
+                  >
               </div>
               <!-- Input precio -->
               <div class="mb-3 d-flex gap-3">
@@ -46,11 +47,13 @@
                     required
                     min="1"
                     max="20000000"
+                    
                   >
                 </div>
                 <div class="w-100">
                   <label for="categoriaProducto" class="form-label">Categoria</label>
                   <select class="form-select" id="categoriaProducto" name="categoria" required>
+                    <!-- <option value=""></option> -->
                     <option value="consolas">Consolas</option>
                     <option value="juegos">Juegos</option>
                     <option value="accesorios">Accesorios</option>
@@ -59,23 +62,25 @@
               </div>
               <!-- Input de la Imagen -->
               <div class="mb-3">
-                <label for="imagenProducto" class="form-label">URL de la imagen</label>
+                <label for="imagen" class="form-label">URL de la imagen</label>
                 <input 
                   type="url"
                   name="imagen"
                   class="form-control" 
-                  id="imagenProducto" 
+                  id="imagen" 
                   placeholder="https://dirección-de-la-imagen.com"
                   required
                   minlength="3"
                   maxlength="300"
+                  value="https://media.vandal.net/m/11-2019/2019111419404532_1.jpg"
                 >
               </div>
 
               <!-- Textarea -->
               <div class="mb-3">
                 <label for="descripcionProducto" class="form-label">Descripcion del producto</label>
-                <textarea name="descripcion" class="form-control" id="descripcionProducto" rows="3" required minlength="8" maxlength="400" placeholder="Descripción del producto..."></textarea>
+                <textarea name="descripcion" class="form-control" id="descripcionProducto" rows="3" required minlength="8" maxlength="400" placeholder="Descripción del producto..." readonly>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit aperiam vel vero maxime cum minima.
+                </textarea>
               </div>
 
               <button type="submit" class="btn btn-primary mb-3">Agregar producto</button>
@@ -86,8 +91,16 @@
 
         </div>
 
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-6 bg-primary-subtle">
           <!-- #Tabla -->
+          <div class="mb-3">
+            <label for="filtrar" class="form-label">Filtrar</label>
+            <input 
+              type="text"
+              class="form-control" 
+              id="filtrar" 
+              placeholder="Nombre producto">
+          </div>
             <table class="table table-dark table-striped">
               <thead>
                   <tr>
@@ -96,6 +109,7 @@
                     <th scope="col">Descripcion Producto</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Categoria</th>
+                    <th scope="col">Acciones</th>
                   </tr>
                 </thead>
                 <tbody id="table-body">
