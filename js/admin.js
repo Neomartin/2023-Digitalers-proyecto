@@ -7,7 +7,7 @@
     - categoria
     - id (automatico)
 */
-const consolas = [
+let consolas = [
     {
         id: '5f49fab9-3135-4676-a160-5c3fdbb1ae92',
         descripcion: 'Consola de hogar con gráficos en alta definición.',
@@ -83,7 +83,7 @@ const consolas = [
 ];
 const tableBodyHTML = document.querySelector("#table-body")
 // Pintamos productos al cargar nuestro script por primera vez
-pintarProductos()
+pintarProductos(consolas)
 const inputFiltrarHTML = document.getElementById("filtrar")
 
 const formularioProductoHTML = document.getElementById("formularioProducto")
@@ -115,10 +115,10 @@ formularioProductoHTML.addEventListener('submit', (evt) => {
 
 
 
-function pintarProductos() {
+function pintarProductos(arrayAPintar) {
     tableBodyHTML.innerHTML = "";
 
-    consolas.forEach(function(conso, index) {
+    arrayAPintar.forEach(function(conso, index) {
         tableBodyHTML.innerHTML += 
             `<tr>
                 <td class="table-image">
@@ -128,11 +128,16 @@ function pintarProductos() {
                 <td class="table-description">${conso.descripcion}</td>
                 <td class="table-price">${conso.precio}</td>
                 <td class="table-category">${conso.categoria}</td>
-                <td>
-                    <button class="btn btn-danger btn-sm" onclick="borrarProducto(${index})">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                
+                <td >
+                    <div class="d-flex gap-1">
+                        <button class="btn-delete btn btn-danger btn-sm" onclick="borrarProducto('${conso.id}')">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                        <button class="btn btn-success btn-sm" onclick="editarProducto('${conso.id}')">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                    </div>
+                    
                 </td>
             </tr>`
     })
@@ -141,13 +146,87 @@ function pintarProductos() {
 
 //Funcion para filtrar productos
 inputFiltrarHTML.addEventListener('keyup', (evt) => {
-    console.log(evt.target.value )
+
+    const busqueda = evt.target.value.toLowerCase();
+    
+    const resultado = consolas.filter((producto) =>  {
+        //Iterar cada producto
+        const titulo = producto.titulo.toLowerCase()
+        //Vamor a mirar si la busqueda coincide con el titulo
+        if( titulo.includes(busqueda)  ) {
+            return true
+        } 
+        return false
+    } )
+    pintarProductos(resultado)
+
 })
 
-function borrarProducto(indiceRecibido) {
-    consolas.splice(indiceRecibido, 1)
-    pintarProductos()
+
+
+
+
+//#Opción recomendada pero más compleja de borrar elementos
+// function obtenerBotones() {
+//     const deleteButtons = document.querySelectorAll(".btn-delete")
+
+//     deleteButtons.forEach((btn, index) => {
+//         btn.addEventListener("click", () => {
+//             borrarProducto(index)
+//         })
+//     })
+// }
+// obtenerBotones()
+
+const borrarProducto = (idABuscar) => {
+    const indiceEncontrado = consolas.findIndex((productoFindIndex) => {
+        if(productoFindIndex.id === idABuscar) {
+            return true
+        }
+        return false
+    })
+    consolas.splice(indiceEncontrado, 1)
+    pintarProductos(consolas)
+    // obtenerBotones()
 }
+
+
+const editarProducto = function(idRecibido) {
+    console.log(`Editar elemento ${idRecibido}`)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const delButtons = document.querySelectorAll("[data-delete-id]")
+
+// delButtons.forEach(del => del.addEventListener('click', (event) => {
+//     event.preventDefault()
+//     console.dir(event.target)
+//     const id = event.target.getAttribute('data-delete-id');
+//     console.log(event.currentTarget.dataset.deleteId)
+// }))
+
+// function borrarProducto(indiceRecibido) {
+//     consolas.splice(indiceRecibido, 1)
+//     pintarProductos()
+// }
 
 
 
