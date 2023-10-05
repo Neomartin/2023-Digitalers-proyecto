@@ -47,13 +47,13 @@
                     required
                     min="1"
                     max="20000000"
-                    
+                    step=".01"
                   >
                 </div>
                 <div class="w-100">
                   <label for="categoriaProducto" class="form-label">Categoria</label>
                   <select class="form-select" id="categoriaProducto" name="categoria" required>
-                    <!-- <option value=""></option> -->
+                    <option value=""></option>
                     <option value="consolas">Consolas</option>
                     <option value="juegos">Juegos</option>
                     <option value="accesorios">Accesorios</option>
@@ -72,14 +72,13 @@
                   required
                   minlength="3"
                   maxlength="300"
-                  value="https://media.vandal.net/m/11-2019/2019111419404532_1.jpg"
                 >
               </div>
 
               <!-- Textarea -->
               <div class="mb-3">
                 <label for="descripcionProducto" class="form-label">Descripcion del producto</label>
-                <textarea name="descripcion" class="form-control" id="descripcionProducto" rows="3" required minlength="8" maxlength="400" placeholder="Descripción del producto..." readonly>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit aperiam vel vero maxime cum minima.
+                <textarea name="descripcion" class="form-control" id="descripcionProducto" rows="3" required minlength="8" maxlength="400" placeholder="Descripción del producto..." readonly>
                 </textarea>
               </div>
 
