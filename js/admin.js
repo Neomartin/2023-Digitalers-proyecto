@@ -83,6 +83,7 @@ let consolas = [
     }
 ];
 let idEditar;
+const btn = document.querySelector('button.btn[type="submit"]')
 const tableBodyHTML = document.querySelector("#table-body")
 // Pintamos productos al cargar nuestro script por primera vez
 pintarProductos(consolas)
@@ -100,6 +101,7 @@ formularioProductoHTML.addEventListener('submit', (evt) => {
     // let id = idEditar === undefined ? crypto.randomUUID() : idEditar
     let id;
 
+    //Definimos si el producto lo estamos editando la propiedad id no la modificamos sin embargo si NO estamos editando le genero un Id con crypto
     if(idEditar) {
         id = idEditar
     } else {
@@ -117,18 +119,25 @@ formularioProductoHTML.addEventListener('submit', (evt) => {
         fechaDeCreacion: obtenerFecha(),
     }
 
+
     if(idEditar) {
+        //Busco el indice del elemento que quiero editar
         const index = consolas.findIndex(consola => {
             return consola.id === idEditar
         })
-
+        //Remplazo el producto encontrado directamente en el array
         consolas[index] = nuevoProducto;
-
-
+        //Reseteo la variable editar
+        idEditar = undefined;
+        //Vuelvo el botón a su estado normal
+        btn.innerText = "Agregar producto"
+        btn.classList.remove("btn-success")
     } else {
         consolas.push(nuevoProducto)
-
     }
+
+
+    
 
 
     pintarProductos(consolas)
@@ -268,14 +277,13 @@ const editarProducto = function(idRecibido) {
     // Modificar el botón de agregar con uno de editar
     // Luego reemplazar el producto anterior con los datos nuevos
 
-    const btn = document.querySelector('button.btn[type="submit"]')
+    
     btn.innerText = "Editar Producto"
     btn.classList.add("btn-success")
 
 
 
-    // btn.innerText = "Agregar producto"
-    // btn.classList.remove("btn-success")
+    
 }
 
 
