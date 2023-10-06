@@ -82,6 +82,9 @@ let consolas = [
         categoria: 'consolas'
     }
 ];
+
+
+
 let idEditar;
 const btn = document.querySelector('button.btn[type="submit"]')
 const tableBodyHTML = document.querySelector("#table-body")
@@ -137,7 +140,11 @@ formularioProductoHTML.addEventListener('submit', (evt) => {
     }
 
 
-    
+    Swal.fire({
+        icon: 'success',
+        title: 'Producto agregado/modificado correctamente',
+        text: 'El producto se actualizo o modifico correctamente!',
+      })
 
 
     pintarProductos(consolas)
@@ -169,7 +176,7 @@ function pintarProductos(arrayAPintar) {
                         <button class="btn-delete btn btn-danger btn-sm" onclick="borrarProducto('${conso.id}')">
                             <i class="fa-solid fa-trash"></i>
                         </button>
-                        <button class="btn btn-success btn-sm" onclick="editarProducto('${conso.id}')">
+                        <button class="btn btn-success btn-sm" onclick="editarProducto('${conso.id}')" data-bs-toggle="modal" data-bs-target="#formModal">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
                     </div>
@@ -215,14 +222,32 @@ inputFiltrarHTML.addEventListener('keyup', (evt) => {
 // obtenerBotones()
 
 const borrarProducto = (idABuscar) => {
-    const indiceEncontrado = consolas.findIndex((productoFindIndex) => {
-        if(productoFindIndex.id === idABuscar) {
-            return true
+    
+
+    Swal.fire({
+        title: 'Desea borrar producto',
+        icon: 'error',
+        text: 'Realmente desea elminar el producto?',
+        showCloseButton: true,
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar' ,
+        confirmButtonText: 'Borrar',
+      }).then((result) => {
+
+        if(result.isConfirmed) {
+            const indiceEncontrado = consolas.findIndex((productoFindIndex) => {
+                if(productoFindIndex.id === idABuscar) {
+                    return true
+                }
+                return false
+            })
+            consolas.splice(indiceEncontrado, 1);
+            pintarProductos(consolas)
+            Swal.fire('Borrado!', 'Producto borrado correctamente', 'success')
         }
-        return false
-    })
-    consolas.splice(indiceEncontrado, 1)
-    pintarProductos(consolas)
+      })
+
+    
     // obtenerBotones()
 }
 
