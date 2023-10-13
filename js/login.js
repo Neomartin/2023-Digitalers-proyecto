@@ -40,61 +40,51 @@ if( localStorage.getItem("users") === null  ) {
 
 const users = JSON.parse(localStorage.getItem("users"))
 
+
 const loginForm = document.getElementById("login")
-
-
-loginForm.addEventListener("submit", (event) => {
-    //Evitar el comportamiento por defecto del evento submit
-    event.preventDefault()
-    //2- Obtener los datos ingresados por el usuario
+    loginForm.addEventListener("submit", (event) => {
+        //Evitar el comportamiento por defecto del evento submit
+        event.preventDefault()
+        //2- Obtener los datos ingresados por el usuario
+        
+        const emailInput = event.target.elements.email.value;
+        const passwordInput = event.target.elements.password.value;
     
-    const emailInput = event.target.elements.email.value;
-    const passwordInput = event.target.elements.password.value;
-
-    //3- Primero buscar si tengo un usuario con ese email
-    //Guardo ese usuario en una variable
-    const userExist = users.find(usr => {
-
-        if(usr.email === emailInput) {
-            return true
+        //3- Primero buscar si tengo un usuario con ese email
+        //Guardo ese usuario en una variable
+        const userExist = users.find(usr => {
+    
+            if(usr.email === emailInput) {
+                return true
+            }
+    
+            return false;
+        })
+    
+        if(!userExist || userExist.password !== passwordInput) {
+        // if(!userExist) {
+            Swal.fire("Login incorrecto", "Los datos ingresados son incorrectos", "error");
+            return;
         }
-
-        return false;
+        
+    
+        //HACER EL LOGIN
+        Swal.fire("Login Correcto", "En breve será redireccionado", "success")
+    
+        // userExist.password = undefined
+        delete userExist.password
+    
+        localStorage.setItem( "currentUser", JSON.stringify(userExist)   )
+    
+        setTimeout(function() {
+            window.location.href = '/index.html'
+        }, 2000)
+    
+        //Preguntar si ese usuario que yo encuentro tiene un password exactamente igual que persona ingreso
+        
+        // #Guardar ese usuario en localStorage 
+        // !Mostramos un alert del usuario
+    
     })
 
-    if(!userExist || userExist.password !== passwordInput) {
-    // if(!userExist) {
-        Swal.fire("Login incorrecto", "Los datos ingresados son incorrectos", "error");
-        return;
-    }
-    
 
-    //HACER EL LOGIN
-    Swal.fire("Login Correcto", "En breve será redireccionado", "success")
-
-    // userExist.password = undefined
-    delete userExist.password
-
-    localStorage.setItem( "currentUser", JSON.stringify(userExist)   )
-
-    setTimeout(function() {
-        window.location.href = '/index.html'
-    }, 2000)
-
-    //Preguntar si ese usuario que yo encuentro tiene un password exactamente igual que persona ingreso
-    
-    // #Guardar ese usuario en localStorage 
-    // !Mostramos un alert del usuario
-
-
-
-
-})
-
-
-function logout() {
-    localStorage.removeItem("currentUser")
-    setTimeout(function() {
-        window.location.href = "/index.html"
-    }, 1500)
-}

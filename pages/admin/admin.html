@@ -14,9 +14,45 @@
 
   <link rel="stylesheet" href="/css/styles.css">
 
+  <script src="/js/guard.js"></script>
+
+
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-md bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul id="nav-list" class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
+          </li>
+
+          <li class="nav-item">
+
+            <a class="nav-link" href="#">Contacto</a>
+            
+          </li>
+          
+        </ul>
+
+        <div class="d-flex text-white">
+            <div id="user-header-name">
+            </div>
+            <div id="user-action">
+                
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  </nav>
   <div class="container-lg ">
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#formModal">
@@ -141,7 +177,7 @@
 
 
   <script src="/js/admin.js"></script>
-  <!-- <script src="/js/storage.js"></script> -->
+  <script src="/js/user-info.js"></script>
 </body>
 
 </html>
